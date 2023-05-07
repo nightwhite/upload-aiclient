@@ -94,6 +94,7 @@ export default {
       this.$refs['elForm'].validate(valid => {
         if (!valid) return
         console.log(this.formData);
+        this.fullscreenLoading = true
         // TODO 提交表单
         uni.request({
           method: 'POST',
@@ -101,8 +102,6 @@ export default {
           data: this.formData,
           success: async (res) => {
             console.log(res.data);
-            this.fullscreenLoading = true
-
             // 每 30 秒获取一次状态
             const timer = setInterval(async () => {
               const res = await this.getStatus();
