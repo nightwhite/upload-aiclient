@@ -70,10 +70,10 @@ export default {
           message: '请输入存储桶名称',
           trigger: 'blur'
         },
-        // 判断格式为 y7lnyy-test -前面是 6 位数字加字母组合，后面数量不一定的数字加字母组合
+        // 判断格式为 y7lnyy-test -前面是 6 位数字加字母组合，后面数量不一定的数字加字母和 - 组合
         {
           validator: (rule, value, callback) => {
-            const reg = /^[a-z0-9]{6,}-[a-z0-9]{1,}$/
+            const reg = /^[a-z0-9]{6,}-[a-z0-9-]{1,}$/
             if (!reg.test(value)) {
               callback(new Error('存储桶名称格式不正确'))
             } else {
